@@ -102,7 +102,6 @@ print(scores)
 train_test_split(X, y, train_size=2400)
 gb.fit(X, y)
 np.argmax(gb.feature_importances_)
-gbedict
 features_names[4]
 features_names[6]
 len(np.arange(150, 800, 50))

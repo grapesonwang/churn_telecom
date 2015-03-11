@@ -4,6 +4,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from sklearn.learning_curve import validation_curve
 import seaborn as sns
+from matplotlib.colors import ListedColormap
 
 
 def deviance_curve(classifier, features, labels, metaparameter_name, param_range, metric='Accuracy',
@@ -36,3 +37,12 @@ def deviance_curve(classifier, features, labels, metaparameter_name, param_range
                      validation_scores_mean + validation_scores_std, alpha=0.2, color="lightcoral")
     plt.legend(loc="best")
     plt.show()
+
+
+# Visualizes how a classifier would classify each point in a grid
+# http://scikit-learn.org/stable/auto_examples/neighbors/plot_classification.html
+
+
+def decision_boundary(clf, features, labels):
+    pass
+
