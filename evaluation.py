@@ -4,7 +4,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from sklearn.learning_curve import validation_curve
 import seaborn as sns
-from matplotlib.colors import ListedColormap
+from sklearn.tree import export_graphviz
+from pydotplus.graphviz import graph_from_dot_file
+from pydotplus.graphviz import Dot
+from os import system
 
 
 def deviance_curve(classifier, features, labels, metaparameter_name, param_range, metric='Accuracy',
@@ -43,6 +46,13 @@ def deviance_curve(classifier, features, labels, metaparameter_name, param_range
 # http://scikit-learn.org/stable/auto_examples/neighbors/plot_classification.html
 
 
-def decision_boundary(clf, features, labels):
-    pass
+def plot_tree(clf, dot_file):
+    with open(dot_file, 'w') as fout:
+        export_graphviz(clf, out_file=fout)
+    d = graph_from_dot_file(dot_file)
+    filepath = dot_file[:-4]
+    d.write_ps(filepath + '.jpg')
+    d.write_png(filepath + '.ps')
+    d.write_pdf(filepath + '.pdf')
+
 
